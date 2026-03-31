@@ -36,12 +36,21 @@ By the end of this session, students will be able to:
 </table>
 ```
 
+> **Code Explanation:**
+> - `<table border="1">` — creates a table container with a 1-pixel solid border around all cells
+> - `<tr>` — defines a **table row**; every row starts with `<tr>` and ends with `</tr>`
+> - `<th>Name</th>` — a **table header** cell; text inside `<th>` is automatically **bold and centered**
+> - `<td>Rahul</td>` — a **table data** cell; this holds regular content (left-aligned by default)
+> - Each `<tr>` must contain the same number of `<th>` or `<td>` cells to keep the table aligned
+
 **Renders as:**
 
 | Name | Age |
 |------|-----|
 | Rahul | 20 |
 | Priya | 21 |
+
+> 💡 **Real-World Analogy:** Think of an HTML table like an **Excel spreadsheet** — `<table>` is the sheet itself, `<tr>` is a row, `<th>` is a header cell (like the first bold row in Excel), and `<td>` is a regular data cell.
 
 ### Key Tags
 
@@ -55,6 +64,77 @@ By the end of this session, students will be able to:
 | `<thead>` | Groups header rows |
 | `<tbody>` | Groups body rows |
 | `<tfoot>` | Groups footer rows |
+
+### Semantic Table Structure with `<thead>`, `<tbody>`, `<tfoot>`
+
+While a simple table works with just `<tr>`, `<th>`, and `<td>`, **semantic table tags** help the browser (and screen readers) understand which part of the table is the header, body, and footer. Think of it like a **printed report** — the header row appears on every printed page, the body has the data, and the footer shows totals.
+
+```html
+<!-- Semester marks report using semantic table structure -->
+<table border="1" cellpadding="8" cellspacing="0" width="80%">
+    <caption><b>BCA Semester II — Internal Marks (2025-26)</b></caption>
+
+    <!-- Table Header: appears at top (repeated on each printed page) -->
+    <thead>
+        <tr bgcolor="#1565C0">
+            <th><font color="white">Roll No</font></th>
+            <th><font color="white">Student Name</font></th>
+            <th><font color="white">Web Tech</font></th>
+            <th><font color="white">Data Structures</font></th>
+            <th><font color="white">Maths</font></th>
+        </tr>
+    </thead>
+
+    <!-- Table Footer: totals/averages (placed before tbody in HTML, rendered at bottom) -->
+    <tfoot>
+        <tr bgcolor="#E3F2FD">
+            <td colspan="2" align="right"><strong>Class Average:</strong></td>
+            <td align="center"><strong>17.3</strong></td>
+            <td align="center"><strong>16.0</strong></td>
+            <td align="center"><strong>15.7</strong></td>
+        </tr>
+    </tfoot>
+
+    <!-- Table Body: the actual data rows -->
+    <tbody>
+        <tr>
+            <td align="center">001</td>
+            <td>Amit Sharma</td>
+            <td align="center">18</td>
+            <td align="center">16</td>
+            <td align="center">15</td>
+        </tr>
+        <tr bgcolor="#F5F5F5">
+            <td align="center">002</td>
+            <td>Priya Verma</td>
+            <td align="center">19</td>
+            <td align="center">17</td>
+            <td align="center">18</td>
+        </tr>
+        <tr>
+            <td align="center">003</td>
+            <td>Ravi Patel</td>
+            <td align="center">15</td>
+            <td align="center">15</td>
+            <td align="center">14</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+> **Code Explanation:**
+> - `<thead>` wraps the **header row(s)** — browsers know this row labels the columns and may repeat it when printing
+> - `<tfoot>` wraps the **footer row(s)** — used for totals, averages, or summary data. In HTML, `<tfoot>` is written **before** `<tbody>` but rendered **at the bottom**
+> - `<tbody>` wraps the **data rows** — this is the main content of the table
+> - `<caption>` provides a **title** for the table, displayed above it — useful for accessibility
+> - `colspan="2"` in the footer merges two cells so "Class Average:" spans the Roll No and Name columns
+
+| Semantic Tag | Purpose | Analogy |
+|-------------|---------|---------|
+| `<thead>` | Groups header rows | The column titles row in an Excel sheet |
+| `<tbody>` | Groups data rows | The actual data in the spreadsheet |
+| `<tfoot>` | Groups footer rows | The "Total" or "Average" row at the bottom |
+| `<caption>` | Table title | The title you give to a report |
 
 ---
 
@@ -95,6 +175,18 @@ By the end of this session, students will be able to:
 | `align` | Horizontal alignment | `<td>` or `<th>` |
 | `valign` | Vertical alignment | `<td>` or `<th>` |
 
+> **Code Explanation (Table Attributes example above):**
+> - `border="2"` — sets a 2-pixel border around every cell
+> - `cellpadding="10"` — adds 10px of space **inside** each cell (between the text and the cell border) — like adding padding inside a box
+> - `cellspacing="5"` — adds 5px of space **between** cells — like leaving gaps between boxes on a shelf
+> - `width="80%"` — makes the table occupy 80% of the parent element's width
+> - `bgcolor="#f0f0f0"` — sets a light grey background colour for the entire table
+> - `<caption>` — adds a title above the table (useful for accessibility and context)
+> - `align="center"` on `<td>` — centres the text inside that specific cell
+> - `bgcolor="#333333"` on `<tr>` — sets a dark background for the header row only
+
+> 💡 **Cellpadding vs Cellspacing:** Imagine each cell is a **gift box**. `cellpadding` is the foam/bubble-wrap **inside** the box (between the gift and the box walls). `cellspacing` is the **gap between boxes** sitting on a shelf.
+
 ---
 
 ## 3. Colspan & Rowspan
@@ -119,23 +211,165 @@ By the end of this session, students will be able to:
 </table>
 ```
 
+> **Code Explanation (Colspan):**
+> - `colspan="3"` on the first `<th>` makes it **span across 3 columns**, creating a merged title row
+> - The second `<tr>` has 3 separate `<th>` cells — these become the actual column headers
+> - The total number of columns in the table is determined by the row with the most individual cells (3 in this case)
+
 ### Rowspan (Merge Rows)
 
 ```html
 <table border="1" cellpadding="8">
     <tr>
-        <th>Day</th>
-        <th>Subject</th>
+        <th>Day</th>         <!-- Column 1 header -->
+        <th>Subject</th>     <!-- Column 2 header -->
     </tr>
     <tr>
-        <td rowspan="2">Monday</td>
+        <td rowspan="2">Monday</td>   <!-- This cell spans 2 rows vertically -->
         <td>Web Technology</td>
     </tr>
     <tr>
+        <!-- No <td> for Day column — it's covered by the rowspan above -->
         <td>Data Structures</td>
     </tr>
 </table>
 ```
+
+> **Code Explanation (Rowspan):**
+> - `rowspan="2"` on "Monday" makes this cell **stretch down across 2 rows** — so "Monday" appears once but covers both subject rows
+> - The third `<tr>` only has **one** `<td>` (Data Structures), because the Day column is already occupied by the spanning cell from the row above
+> - **Common mistake:** Adding an extra `<td>` in the third row for Day — this would break the table because the rowspan already covers that space
+
+> 💡 **Colspan vs Rowspan Visual:**
+> ```
+> colspan="3" (merge columns horizontally):
+> ┌───────────────────────────┐
+> │      Student Information   │  ← 1 cell spanning 3 columns
+> ├─────────┬────────┬────────┤
+> │  Name   │ Roll   │ Grade  │
+> └─────────┴────────┴────────┘
+>
+> rowspan="2" (merge rows vertically):
+> ┌─────────┬─────────────────┐
+> │         │ Web Technology   │
+> │ Monday  ├─────────────────┤  ← "Monday" spans 2 rows
+> │         │ Data Structures  │
+> └─────────┴─────────────────┘
+> ```
+
+---
+
+## 4. Table Accessibility
+
+When you create tables, not everyone views them visually — **screen readers** (used by visually impaired users) read tables aloud. To help screen readers understand the table structure, use the `scope` attribute on `<th>` elements.
+
+### The `scope` Attribute
+
+```html
+<table border="1" cellpadding="8">
+    <caption>BCA II Semester Exam Schedule</caption>
+    <tr>
+        <th scope="col">Date</th>          <!-- This header labels a column -->
+        <th scope="col">Subject</th>       <!-- This header labels a column -->
+        <th scope="col">Time</th>          <!-- This header labels a column -->
+    </tr>
+    <tr>
+        <th scope="row">10 May 2026</th>   <!-- This header labels a row -->
+        <td>Web Technology</td>
+        <td>10:00 AM - 1:00 PM</td>
+    </tr>
+    <tr>
+        <th scope="row">12 May 2026</th>   <!-- This header labels a row -->
+        <td>Data Structures</td>
+        <td>10:00 AM - 1:00 PM</td>
+    </tr>
+</table>
+```
+
+> **Code Explanation:**
+> - `scope="col"` tells the screen reader: "This header applies to all cells **below** in this column"
+> - `scope="row"` tells the screen reader: "This header applies to all cells **to the right** in this row"
+> - `<caption>` gives the table a title that screen readers announce before reading the table content
+> - A screen reader would announce: *"Table: BCA II Semester Exam Schedule. Row 2: Date: 10 May 2026, Subject: Web Technology, Time: 10:00 AM - 1:00 PM"*
+
+| `scope` Value | Meaning |
+|--------------|---------|
+| `col` | Header applies to the entire **column** below |
+| `row` | Header applies to the entire **row** to the right |
+| `colgroup` | Header applies to a **group of columns** |
+| `rowgroup` | Header applies to a **group of rows** |
+
+> 💡 **Why does this matter?** In India, government websites must follow accessibility guidelines (GIGW — Guidelines for Indian Government Websites). Using `scope` and `<caption>` makes your tables accessible to all users, including those using screen readers.
+
+---
+
+## 5. When to Use Tables (and When NOT To)
+
+This is an important concept many beginners get wrong. Tables are meant for **tabular data only** — data that naturally fits in rows and columns.
+
+### ✅ When Tables ARE Appropriate
+
+| Use Case | Example |
+|----------|---------|
+| Data display | Student marks, exam results |
+| Schedules | Class timetable, train schedule |
+| Comparisons | Feature comparison of products |
+| Financial data | Price lists, invoices, budgets |
+| Statistics | Census data, survey results |
+
+### ❌ When Tables are NOT Appropriate
+
+| Don't Use For | Use Instead |
+|--------------|-------------|
+| Page layout (header, sidebar, footer) | `<div>` with CSS, or HTML5 semantic tags (`<header>`, `<nav>`, `<main>`, `<footer>`) |
+| Navigation menus | `<nav>` with `<ul>` list |
+| Image galleries | `<div>` grid with CSS Flexbox/Grid |
+| Form layout | CSS styling on `<form>` elements |
+| Placing elements side by side | CSS Flexbox or CSS Grid |
+
+> 💡 **Real-World Analogy:** Using a table for page layout is like using a **bookshelf to build a wall** — it works, but it's not the right tool. Bookshelves are for storing books (data), walls are built with bricks (CSS layouts). In the early days of the web (1990s), developers used tables for layouts because CSS didn't exist yet. Today, we use CSS for layout and tables only for data.
+
+---
+
+## 6. Nested Tables
+
+You can place a table **inside another table's cell** — this is called a **nested table**. While not commonly used today, it helps understand how complex table structures work.
+
+```html
+<table border="1" cellpadding="8" width="80%">
+    <tr>
+        <th colspan="2">Mandsaur University — Department Overview</th>
+    </tr>
+    <tr>
+        <td valign="top"><strong>BCA Department</strong></td>
+        <td>
+            <!-- Nested table inside a cell -->
+            <table border="1" cellpadding="4" width="100%">
+                <tr bgcolor="#E3F2FD">
+                    <th>Subject</th>
+                    <th>Faculty</th>
+                </tr>
+                <tr>
+                    <td>Web Technology</td>
+                    <td>Prof. Mehta</td>
+                </tr>
+                <tr>
+                    <td>Data Structures</td>
+                    <td>Prof. Joshi</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+```
+
+> **Code Explanation:**
+> - The **outer table** has 2 rows — a merged title row and a data row with 2 columns
+> - Inside the second column of the data row, we place an **entirely new `<table>`** — this is the nested table
+> - The nested table has its own `<tr>`, `<th>`, and `<td>` — it's a complete table within a cell
+> - `valign="top"` on the outer `<td>` ensures "BCA Department" aligns to the top of the cell, even if the nested table is taller
+
+> ⚠️ **Note:** Nested tables increase complexity and can be hard to maintain. Modern web development prefers CSS-based layouts for complex structures. However, understanding nested tables is useful for reading legacy code and for exam purposes.
 
 ---
 
@@ -236,6 +470,15 @@ By the end of this session, students will be able to:
 </html>
 ```
 
+> **Code Explanation (Lab Experiment 5):**
+> - The table uses `cellspacing="0"` to remove gaps between cells, giving a clean grid look
+> - `bgcolor="#1565C0"` on the header `<tr>` creates a blue header row; `<font color="white">` makes the text readable on the dark background
+> - `bgcolor="#E3F2FD"` on the time column cells gives them a light blue background so students can quickly identify time slots
+> - `colspan="6"` on the Tea Break and Lunch Break rows merges all 6 day columns into one wide cell
+> - `colspan="2"` on the Lab period cells merges two day columns (e.g., Mon-Tue) to show a 2-day lab session spanning those days
+> - `align="center"` centres text inside cells for a neat, professional timetable appearance
+> - The `<caption>` tag adds a title "Weekly Schedule" above the table
+
 ---
 
 ### 🧪 Lab Experiment 6: University Infrastructure Page (Table Layout)
@@ -328,6 +571,15 @@ By the end of this session, students will be able to:
 </html>
 ```
 
+> **Code Explanation (Lab Experiment 6):**
+> - This experiment demonstrates using **tables for page layout** (an older technique — modern sites use CSS, but it's important to understand)
+> - **Header table:** `width="100%"` makes it span the full browser width; the logo is in a 20%-wide cell, the title text in the remaining 80%
+> - **Navigation table:** Each `<td>` holds a navigation link; `<font color="white">` makes links visible on the dark blue background
+> - **Content table:** `width="90%" align="center"` creates a centred content area; two `<td>` cells with `width="50%"` and `valign="top"` create a two-column layout
+> - **Image cells:** `width="100%"` on the `<img>` tag makes images fill their table cell
+> - **Footer table:** A simple full-width table with a dark background and centred copyright text
+> - ⚠️ **Important:** This layout technique using tables is **outdated**. In Day 12, you'll learn to create the same layout using `<div>` tags, and in Unit 4 (CSS), you'll learn Flexbox and Grid — the modern way
+
 ---
 
 ## Practice Exercise
@@ -351,12 +603,25 @@ Create a table showing the **marks of 5 students** in 4 subjects with:
 | `<tr>` | Table row |
 | `<th>` | Header cell (bold, centered) |
 | `<td>` | Data cell |
+| `<thead>` | Semantic grouping of header rows |
+| `<tbody>` | Semantic grouping of data rows |
+| `<tfoot>` | Semantic grouping of footer rows |
+| `<caption>` | Table title (important for accessibility) |
+| `scope` | Accessibility attribute on `<th>` (`col` / `row`) |
 | `border` | Border width |
 | `cellpadding` | Inner space in cells |
 | `cellspacing` | Space between cells |
-| `colspan` | Merge columns |
-| `rowspan` | Merge rows |
+| `colspan` | Merge columns horizontally |
+| `rowspan` | Merge rows vertically |
 | `bgcolor` | Background color |
+
+### Key Rules to Remember
+
+1. ✅ Use tables for **tabular data** (marks, timetables, price lists)
+2. ❌ Do NOT use tables for **page layout** — use `<div>` and CSS instead
+3. Always add `<caption>` and `scope` attributes for **accessibility**
+4. Use `<thead>`, `<tbody>`, `<tfoot>` for **semantic structure**
+5. `colspan` merges cells **horizontally**, `rowspan` merges **vertically**
 
 ---
 

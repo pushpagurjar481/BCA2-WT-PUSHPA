@@ -25,12 +25,18 @@ An ordered list displays items with numbers.
 ```html
 <h3>Steps to Create a Web Page</h3>
 <ol>
-    <li>Open a text editor (VS Code)</li>
-    <li>Write HTML code</li>
-    <li>Save with .html extension</li>
-    <li>Open in a web browser</li>
+    <li>Open a text editor (VS Code)</li>      <!-- Step 1 -->
+    <li>Write HTML code</li>                   <!-- Step 2 -->
+    <li>Save with .html extension</li>         <!-- Step 3 -->
+    <li>Open in a web browser</li>             <!-- Step 4 -->
 </ol>
 ```
+
+> **Code Explanation:**
+> - `<ol>` creates an **ordered (numbered) list** — items are automatically numbered 1, 2, 3…
+> - Each `<li>` (list item) represents one item in the list
+> - The browser adds numbers automatically — you don't need to type "1.", "2." etc.
+> - The closing `</ol>` tells the browser where the list ends
 
 ### Changing the Number Type
 
@@ -43,6 +49,14 @@ An ordered list displays items with numbers.
 <ol start="5"> <!-- Start counting from 5 -->
 ```
 
+> **Code Explanation:**
+> - `type="1"` — default decimal numbers (1, 2, 3…)
+> - `type="A"` — uppercase letters (A, B, C…) — useful for sub-questions in exams
+> - `type="a"` — lowercase letters (a, b, c…)
+> - `type="I"` — uppercase Roman numerals (I, II, III…) — commonly used for main sections
+> - `type="i"` — lowercase Roman numerals (i, ii, iii…)
+> - `start="5"` — the list starts counting from 5 instead of 1
+
 ---
 
 ## 2. Unordered Lists (`<ul>`)
@@ -52,12 +66,17 @@ An unordered list displays items with bullet points.
 ```html
 <h3>Programming Languages</h3>
 <ul>
-    <li>Python</li>
-    <li>JavaScript</li>
-    <li>Java</li>
-    <li>C++</li>
+    <li>Python</li>         <!-- Bullet item 1 -->
+    <li>JavaScript</li>     <!-- Bullet item 2 -->
+    <li>Java</li>           <!-- Bullet item 3 -->
+    <li>C++</li>            <!-- Bullet item 4 -->
 </ul>
 ```
+
+> **Code Explanation:**
+> - `<ul>` creates an **unordered (bulleted) list** — items appear with bullet markers instead of numbers
+> - Use `<ul>` when the **order doesn't matter** (e.g., a list of features, languages, ingredients)
+> - Use `<ol>` when the **order matters** (e.g., steps, rankings, instructions)
 
 ### Changing the Bullet Style
 
@@ -67,6 +86,12 @@ An unordered list displays items with bullet points.
 <ul type="square">  <!-- ■ Filled square -->
 <ul type="none">    <!-- No bullet -->
 ```
+
+> **Code Explanation:**
+> - `type="disc"` — default filled circle bullet (●)
+> - `type="circle"` — hollow circle (○) — often used for nested list levels
+> - `type="square"` — filled square (■) — gives a different visual appearance
+> - `type="none"` — removes bullet markers entirely (useful for navigation menus styled with CSS)
 
 ---
 
@@ -87,11 +112,95 @@ Used for terms and their definitions (like a glossary).
 </dl>
 ```
 
+> **Code Explanation:**
+> - `<dl>` creates a **definition list** container — used for term-definition pairs (like a dictionary or glossary)
+> - `<dt>` is the **definition term** — the word or phrase being defined (displayed normally)
+> - `<dd>` is the **definition description** — the meaning/explanation (automatically indented by the browser)
+> - You can have **multiple `<dd>` tags** for a single `<dt>` if a term has multiple meanings
+
 | Tag | Purpose |
 |-----|---------|
 | `<dl>` | Definition List container |
 | `<dt>` | Definition Term (the word) |
 | `<dd>` | Definition Description (the meaning, indented) |
+
+### More Definition List Examples
+
+Definition lists are useful in many real-world scenarios beyond glossaries:
+
+**Example 1: FAQ Section (Frequently Asked Questions)**
+```html
+<!-- FAQ section for a university website -->
+<h3>Frequently Asked Questions — BCA Admissions</h3>
+<dl>
+    <dt><strong>What is the eligibility for BCA?</strong></dt>
+    <dd>10+2 pass from a recognized board with Mathematics as a subject.</dd>
+    <dd>Minimum 45% aggregate marks (40% for reserved categories).</dd>
+    
+    <dt><strong>What is the course duration?</strong></dt>
+    <dd>3 years (6 semesters), with each semester spanning approximately 6 months.</dd>
+    
+    <dt><strong>Is there a hostel facility?</strong></dt>
+    <dd>Yes, separate hostels for boys and girls are available on campus at Mandsaur University.</dd>
+</dl>
+```
+
+> **Code Explanation:**
+> - This shows a FAQ where questions are `<dt>` and answers are `<dd>`
+> - The first question has **two `<dd>` tags** — this is valid HTML; both descriptions are associated with the same term
+> - This is a practical, real-world use of definition lists beyond just glossaries
+
+**Example 2: Product Specification (Like Flipkart/Amazon)**
+```html
+<!-- Product specifications like an e-commerce site -->
+<h3>Laptop Specifications — Lenovo IdeaPad</h3>
+<dl>
+    <dt><strong>Processor</strong></dt>
+    <dd>Intel Core i5-12th Gen, 2.5 GHz base clock</dd>
+    
+    <dt><strong>RAM</strong></dt>
+    <dd>8 GB DDR4, expandable to 16 GB</dd>
+    
+    <dt><strong>Storage</strong></dt>
+    <dd>512 GB SSD (Solid State Drive)</dd>
+    
+    <dt><strong>Display</strong></dt>
+    <dd>15.6 inch Full HD (1920 x 1080) IPS panel</dd>
+    
+    <dt><strong>Price</strong></dt>
+    <dd>₹52,990 (inclusive of all taxes)</dd>
+</dl>
+```
+
+> **Code Explanation:**
+> - Here, `<dt>` holds the **specification name** (Processor, RAM, etc.) and `<dd>` holds the **specification value**
+> - This is exactly how e-commerce sites like Flipkart and Amazon display product details
+> - The ₹ symbol is used directly in HTML (it's a valid UTF-8 character)
+
+**Example 3: Contact Information**
+```html
+<!-- Contact details using definition list -->
+<h3>Contact Us — Mandsaur University</h3>
+<dl>
+    <dt><strong>📍 Address</strong></dt>
+    <dd>Rewas Dewda Road, Mandsaur, Madhya Pradesh 458001</dd>
+    
+    <dt><strong>📞 Phone</strong></dt>
+    <dd>+91 7422-252455</dd>
+    <dd>+91 7422-252456 (Admission Office)</dd>
+    
+    <dt><strong>📧 Email</strong></dt>
+    <dd>info@mandsauruniversity.edu.in</dd>
+    
+    <dt><strong>🌐 Website</strong></dt>
+    <dd>www.mandsauruniversity.edu.in</dd>
+</dl>
+```
+
+> **Code Explanation:**
+> - Contact information naturally fits the term-definition pattern: label → value
+> - The Phone entry has **two `<dd>` tags** for two different numbers — both are associated with the 📞 Phone term
+> - Emoji characters (📍, 📞, 📧, 🌐) work directly in HTML as they are valid Unicode characters
 
 ---
 
@@ -103,7 +212,7 @@ Lists can be placed inside other lists:
 <h3>BCA Curriculum</h3>
 <ol>
     <li>Semester 1
-        <ul>
+        <ul>                                <!-- Nested unordered list inside an ordered list item -->
             <li>Programming in C</li>
             <li>Computer Fundamentals</li>
             <li>Mathematics</li>
@@ -125,6 +234,30 @@ Lists can be placed inside other lists:
 </ol>
 ```
 
+> **Code Explanation:**
+> - The outer `<ol>` creates a numbered list (1. Semester 1, 2. Semester 2, etc.)
+> - Inside each `<li>`, a `<ul>` creates a **nested bulleted list** for the subjects
+> - The nested `<ul>` must be placed **inside** the `<li>` tag, not after `</li>` — this is a common mistake
+> - You can nest any list type inside another: `<ol>` inside `<ul>`, `<ul>` inside `<ol>`, `<ul>` inside `<ul>`, etc.
+> - Browsers automatically change bullet styles at each nesting level (disc → circle → square)
+
+### List Accessibility
+
+Screen readers (software used by visually impaired people) handle lists in a specific way that makes content easier to navigate:
+
+| List Type | How Screen Readers Announce It |
+|-----------|-------------------------------|
+| `<ol>` | *"List, 4 items. 1. Open a text editor. 2. Write HTML code…"* — announces count and numbers |
+| `<ul>` | *"List, 4 items. Bullet, Python. Bullet, JavaScript…"* — announces count and bullets |
+| `<dl>` | *"Definition list, 3 items. Term: HTML. Definition: HyperText Markup Language…"* |
+| Nested list | *"List, 3 items. 1. Semester 1. List, 3 items. Bullet, Programming in C…"* — announces nesting |
+
+> 💡 **Why does this matter?**
+> - Screen readers announce **how many items** are in the list — this helps users know what to expect
+> - Users can **skip entire lists** using keyboard shortcuts, making navigation faster
+> - If you use `<br>` tags and manual numbers instead of proper `<ol>`, screen readers **cannot** identify it as a list, making your page harder to use
+> - **Rule:** Always use proper list tags (`<ol>`, `<ul>`, `<dl>`) instead of manually numbering items with text
+
 ---
 
 ## 5. The `<font>` Tag — Changing Font Color
@@ -133,6 +266,12 @@ Lists can be placed inside other lists:
 <font color="red" size="4" face="Georgia">This is red text in Georgia font</font>
 <font color="#FF5722" size="6" face="Courier New">Orange in Courier</font>
 ```
+
+> **Code Explanation:**
+> - `color="red"` — sets the text colour (can use colour names like "red" or hex codes like "#FF5722")
+> - `size="4"` — sets font size on a scale of 1 (smallest) to 7 (largest); default is 3
+> - `face="Georgia"` — sets the font family (typeface); the browser uses this font if it's installed on the user's computer
+> - The `<font>` tag wraps around the text you want to style
 
 > ⚠️ Deprecated in HTML5 — use CSS `color`, `font-size`, `font-family` instead. Covered here as it's in the syllabus.
 
@@ -151,6 +290,12 @@ The `<marquee>` tag creates **scrolling text** or content.
 <marquee direction="up">Scrolling up ↑</marquee>
 <marquee direction="down">Scrolling down ↓</marquee>
 ```
+
+> **Code Explanation:**
+> - `<marquee>` without attributes scrolls text from **right to left** by default (the most common direction)
+> - `direction="right"` — text enters from the left and moves towards the right
+> - `direction="up"` — text scrolls upward (useful for news tickers or notice boards)
+> - `direction="down"` — text scrolls downward
 
 ### Marquee Attributes
 
@@ -188,7 +333,102 @@ The `<marquee>` tag creates **scrolling text** or content.
 </marquee>
 ```
 
+> **Code Explanation:**
+> - `behavior="alternate"` — text **bounces** back and forth between the edges (like a ball hitting walls)
+> - `scrollamount="5"` — controls **speed**; higher number = faster scrolling (default is 6)
+> - `direction="up" height="100"` — creates a **vertical scrolling box** of 100px height — commonly used for notice boards
+> - `scrollamount="2"` — slow scrolling speed, suitable for reading notices
+> - `bgcolor="#f0f0f0"` — light grey background for the scrolling area
+> - The last example shows **scrolling images** — `<marquee>` can contain any HTML content, not just text
+> - `&nbsp;&nbsp;&nbsp;` adds non-breaking spaces between the images for visual separation
+
 > ⚠️ `<marquee>` is **deprecated** in HTML5 and not recommended for production websites. We cover it because it's in the syllabus. Use CSS animations instead (covered in Unit 4).
+
+### Why `<marquee>` Was Deprecated
+
+The `<marquee>` tag was introduced by **Microsoft Internet Explorer** in the 1990s and was never part of any official HTML standard. Here's why it was removed:
+
+| Reason | Explanation |
+|--------|-------------|
+| **Not a standard** | It was a Microsoft-only tag, never approved by W3C (the organisation that makes HTML standards) |
+| **Accessibility nightmare** | Screen readers cannot read moving text; users with cognitive disabilities find it distracting |
+| **No user control** | Users cannot pause, stop, or slow down the animation (violates usability principles) |
+| **Seizure risk** | Fast-moving content can trigger seizures in people with photosensitive epilepsy |
+| **CSS can do it better** | CSS animations provide the same visual effect with much more control |
+
+**Current Browser Support:**
+
+| Browser | Support |
+|---------|---------|
+| Chrome | Still works (for backward compatibility) but may be removed anytime |
+| Firefox | Still works but shows deprecation warning in developer tools |
+| Safari | Still works |
+| Edge | Still works (based on Chromium) |
+
+> ⚠️ **Bottom line:** `<marquee>` works today in most browsers, but it can be removed without warning in future browser updates. For real-world projects, **always use CSS animations** instead.
+
+### Modern Alternative: CSS Animation for Scrolling Text
+
+Instead of `<marquee>`, you can achieve the same scrolling effect using **CSS `@keyframes` animation**. This is the modern, accessible, and standards-compliant approach:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Marquee Alternative</title>
+    <style>
+        /* Container that hides content outside its boundaries */
+        .scroll-container {
+            width: 100%;
+            overflow: hidden;          /* Hides text that goes outside the box */
+            background-color: #FF5722;
+            padding: 10px 0;
+        }
+
+        /* The scrolling text */
+        .scroll-text {
+            display: inline-block;
+            white-space: nowrap;       /* Prevents text from wrapping to next line */
+            color: white;
+            font-size: 18px;
+            animation: scroll-left 12s linear infinite;  /* Apply the animation */
+        }
+
+        /* Define the scrolling animation */
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(100%);   /* Start from right edge */
+            }
+            100% {
+                transform: translateX(-100%);  /* End at left edge */
+            }
+        }
+
+        /* Pause animation when user hovers — better accessibility! */
+        .scroll-container:hover .scroll-text {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-container">
+        <span class="scroll-text">
+            📢 Admissions Open for 2026-27! Apply now at mandsauruniversity.edu.in
+        </span>
+    </div>
+</body>
+</html>
+```
+
+> **Code Explanation:**
+> - `.scroll-container` uses `overflow: hidden` to **clip** any text that moves outside the box
+> - `.scroll-text` uses `white-space: nowrap` to keep the text on a **single line** (prevents wrapping)
+> - `animation: scroll-left 12s linear infinite` applies the animation named "scroll-left" that lasts 12 seconds, moves at constant speed (`linear`), and repeats forever (`infinite`)
+> - `@keyframes scroll-left` defines the animation: text starts at `translateX(100%)` (fully off-screen right) and moves to `translateX(-100%)` (fully off-screen left)
+> - `.scroll-container:hover .scroll-text` **pauses** the animation when the user hovers their mouse — this is a big accessibility improvement over `<marquee>` which cannot be paused
+> - You'll learn CSS animations in detail in **Unit 4 (CSS)** — this is just a preview
 
 ---
 
@@ -279,6 +519,15 @@ The `<marquee>` tag creates **scrolling text** or content.
 </body>
 </html>
 ```
+
+> **Code Explanation (Lab Experiment 1):**
+> - **Marquee announcement bar:** `bgcolor="#FF5722"` gives a bright orange background; `scrollamount="4"` controls scroll speed
+> - **Ordered list with Roman numerals:** `<ol type="I">` uses Roman numerals (I, II, III) for main program listing
+> - **Nested unordered list:** Inside each `<li>`, a `<ul type="circle">` creates a bulleted sub-list for program details
+> - **Numbered list for subjects:** A plain `<ol>` lists semester subjects (1, 2, 3…), with nested `<ul>` for topic details
+> - **Square bullets:** `<ul type="square">` uses filled squares (■) for the "Key Features" section — gives visual variety
+> - **Definition list for technologies:** `<dl>` with `<dt>` for technology names and `<dd>` for descriptions — notice how `<font color="blue">` styles the term names
+> - **Bouncing marquee footer:** `behavior="alternate"` makes the text bounce back and forth; `scrollamount="3"` controls speed
 
 ---
 
